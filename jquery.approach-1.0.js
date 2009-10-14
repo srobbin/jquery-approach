@@ -1,12 +1,16 @@
 /*
- * jQuery proxanimate
+ * jQuery Approach
+ * https://github.com/srobbin/jquery-approach/
+ *
+ * A plugin that lets you animate based on radial distance from an object.
+ *
  * Copyright (c) 2009 Scott Robbin (srobbin.com)
  * Dual licensed under the MIT and GPL licenses.
  */
  
 (function($) {
   
-  $.fn.proxanimate = function(styles, distance, callback) {
+  $.fn.approach = function(styles, distance, callback) {
     var settings = {
           "interval" : 50,    // Used to throttle action on mousemove events
           "distance" : 400},  // Minimum distance in pixels within which we start to animate
@@ -51,7 +55,7 @@
           });
         }
       });
-      $(obj).data("proxanimate", proxStyles);
+      $(obj).data("jquery-approach", proxStyles);
       elements.push(obj);
     });
     
@@ -73,7 +77,7 @@
 	          distanceRatio = (settings.distance - distance) / settings.distance,
 	          calcStyles = {};
 	               	          
-	      $.each($(self).data("proxanimate"), function() {	        
+	      $.each($(self).data("jquery-approach"), function() {	        
 	        var style = this,
 	            calcVal,
 	            color; 
