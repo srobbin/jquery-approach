@@ -4,14 +4,20 @@ Approach is a jQuery Plugin that allows you to animate style properties based on
 It works in a very similar manner to jQuery animate, however it animates over distance instead of time.
 
 h2. Demo
+
 See the @demo/index.html@ file for a demonstration of how jQuery Approach works
-or "Click Here":http://srobbin.com/jquery-plugins/jquery-approach/ for a live demo.
+or "view a live demo":http://srobbin.com/jquery-plugins/jquery-approach/.
 
 h2. Options
 
-* styles: Which styles you'd like to animate. Accepts the same syntax and properties as jQuery animate. Also, if you have the jQuery UI Core Effects installed,
+h3. styles
+
+Which styles you'd like to animate. Accepts the same syntax and properties as jQuery animate. Also, if you have the jQuery UI Core Effects installed,
 it will also accept color-based properties. (type=Object, default=None)
-* distance: Set the minimum radial distance where you'd like the animation to begin (type=integer, default=400)
+
+h3. distance
+
+Set the minimum radial distance where you'd like the animation to begin (type=integer, default=400)
 
 h2. Setup
 
