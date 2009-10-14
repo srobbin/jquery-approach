@@ -1,5 +1,5 @@
 /*
- * jQuery Approach
+ * jQuery Approach 1.0
  * https://github.com/srobbin/jquery-approach/
  *
  * A plugin that lets you animate based on radial distance from an object.
