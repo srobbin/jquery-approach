@@ -1,6 +1,6 @@
 h1. jQuery Approach
 
-Approach is a jQuery Plugin that allows you to animate style properties based on cursor’s proximity to an object. 
+Approach is a jQuery plugin that allows you to animate style properties based on cursor’s proximity to an object. 
 It works in a very similar manner to jQuery animate, however it animates over distance instead of time.
 
 h2. Demo
