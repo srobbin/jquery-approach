@@ -5,10 +5,10 @@ It works in a very similar manner to jQuery animate, however it animates over di
 
 h2. Demo
 
-See the @demo/index.html@ file for a demonstration of how jQuery Approach works
+See the @demo/demo.html@ and @demo/demo2.html@ files for a demonstration of how jQuery Approach works
 or "view a live demo":http://srobbin.com/jquery-plugins/jquery-approach/.
 
-Note: This demo only works in browsers that support the CSS style, opacity (not older versions of IE). I will update to a more cross-browser-friendly version soon.
+Note: @demo/demo2.html@ does not work in older versions of IE that don't support "opacity"
 
 h2. Options
 

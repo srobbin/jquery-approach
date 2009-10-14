@@ -12,7 +12,27 @@ body {
 #wrap {
 	width: 670px;
 	height: 268px;
+	cursor: pointer;
 	margin: 30px auto;
+}
+
+#wrap a {
+	display: block;
+	font-size: 72px;
+	text-decoration: none;
+	color: #999;
+	line-height: 268px;
+	text-align: center;
+}
+#wrap a:hover {
+	color: #FFF;
+}
+
+#wrap a#demo-link {
+	font-size: 24px;
+	color: #FFFFCC;
+	line-height: 268px;
+	text-align: center;
 }
 
 #wrap img {
@@ -21,8 +41,4 @@ body {
 	width: 67px;
 	opacity: 0.2;
 	z-index: 0;
-}
-
-#wrap h1 {
-	margin-bottom: 16px;
 }
