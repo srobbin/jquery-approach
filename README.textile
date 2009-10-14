@@ -1,1 +1,38 @@
-h1. jQuery proxanimate
+h1. jQuery Approach
+
+Approach is a jQuery Plugin that allows you to animate style properties based on cursor’s proximity to an object. 
+It works in a very similar manner to jQuery animate, however it animates over distance instead of time.
+
+h2. Demo
+See the @demo/index.html@ file for a demonstration of how jQuery Approach works
+or "Click Here":http://srobbin.com/jquery-plugins/jquery-approach/ for a live demo.
+
+h2. Options
+
+* styles: Which styles you'd like to animate. Accepts the same syntax and properties as jQuery animate. Also, if you have the jQuery UI Core Effects installed,
+it will also accept color-based properties. (type=Object, default=None)
+* distance: Set the minimum radial distance where you'd like the animation to begin (type=integer, default=400)
+
+h2. Setup
+
+Include the jQuery library and Approach plugin files in your webpage tag (preferably at the bottom of the page, before the closing BODY tag):
+
+<pre><code><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.approach-1.0.min.js"></script>
+</code></pre>
+
+Note: The example above uses the Google hosted version of jQuery; there is also a jQuery source file included with this distribution, if you would like to host it yourself.
+Note #2: If you are using color animations, you must also include the jQuery UI Effects Core source code (also included in this distribution).
+
+Next, add the following javascript code (where my_object is replace with the object(s) you'd like to approach/animate, whatever style properties you fancy, and a minimum distance):
+
+<pre><code><script type="text/javascript">
+  $("#my_object").pageSlide({
+    "fontSize": "48px"
+  }, 200);
+</script>
+</code></pre>
+
+h2. Support
+
+Please file a ticket on our Github issues tracker.
