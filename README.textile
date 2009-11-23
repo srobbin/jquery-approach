@@ -44,3 +44,9 @@ Next, add the following javascript code (where my_object is replace with the obj
 h2. Support
 
 Please file a ticket on our Github issues tracker.
+
+h2. Changelog
+
+h3. 1.01
+
+* Checks to see if opacity is supported by the browser (IE). If not, attempts to user filter:alpha(opacity=xx) instead.

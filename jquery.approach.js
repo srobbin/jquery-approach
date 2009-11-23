@@ -1,5 +1,5 @@
 /*
- * jQuery Approach 1.0
+ * jQuery Approach 1.01
  * https://github.com/srobbin/jquery-approach/
  *
  * A plugin that lets you animate based on radial distance from an object.
@@ -34,6 +34,13 @@
           // Rut Roh
           from = {"number": getRGB($(obj).css(style))};
           to = {"number": getRGB(val)};
+        } else if(style == "opacity" && !jQuery.support.opacity) {
+          // We have to treat opacity differently, since IE stores it as a filter
+          // Bug reported, and patch created, by Már Örlygsson (http://mar.eplica.is/ie-opacity-fixed.html)
+          opacity = $(obj).css("filter").match(/opacity=(\d+)/) ? RegExp.$1/100 : "";
+          opacity = opacity === "" ? "1" : opacity;
+          from = getParts(opacity);
+          to = getParts(val);
         } else {
           // Try to parse out units, etc (taken from jQuery animate)
           from = getParts($(obj).css(style)),
@@ -42,8 +49,8 @@
 					
         if(from && to) {
           // If a +=/-= token was provided, we're doing a relative animation (taken from jQuery animate)
-  				if ( to.relative )
-  					to.number = ((to.relative == "-=" ? -1 : 1) * to.number) + from.number;
+          if ( to.relative )
+            to.number = ((to.relative == "-=" ? -1 : 1) * to.number) + from.number;
           
           // Making an assumption that the units are the same for from/to. Bad assumption. TODO: Be more intelligent.
           unit = to.unit || "";
@@ -70,35 +77,39 @@
       lastRun = thisRun;
 
       // Loop through the elements, calculate the values (based on distance), then animate
-	    $.each(elements, function() {
-	      var self = this,
-	          center = getCenter(self),
-	          distance = parseInt(Math.sqrt(Math.pow(e.pageX-center.x,2) + Math.pow(e.pageY-center.y,2))),
-	          distanceRatio = (settings.distance - distance) / settings.distance,
-	          calcStyles = {};
-	               	          
-	      $.each($(self).data("jquery-approach"), function() {	        
-	        var style = this,
-	            calcVal,
-	            color; 
-          
-          // We have to calculate colors differently from dimension-based styles 	        
-	        if($.isArray(style.to)) {
-	          color = (distance > settings.distance) ? style.from : $.map(style.from, function(v, k) {
-	            return parseInt((distanceRatio * (style.to[k] - style.from[k])) + style.from[k]);
-            });
-            calcVal = "rgb(" + color.join(",") + ")";
-	        } else {
-            calcVal = (distance > settings.distance) ? style.from : (distanceRatio * (style.to - style.from)) + style.from;
-  	        calcVal += style.unit;
-	        }
-	
-	        calcStyles[style.name] = calcVal;
-	      });
+      $.each(elements, function() {
+          var self = this,
+              center = getCenter(self),
+              distance = parseInt(Math.sqrt(Math.pow(e.pageX-center.x,2) + Math.pow(e.pageY-center.y,2))),
+              distanceRatio = (settings.distance - distance) / settings.distance,
+              calcStyles = {};
+           	          
+          $.each($(self).data("jquery-approach"), function() {	        
+            var style = this,
+                calcVal,
+                color; 
+  
+            // We have to calculate colors differently from dimension-based styles 	        
+            if($.isArray(style.to)) {
+              color = (distance > settings.distance) ? style.from : $.map(style.from, function(v, k) {
+                return parseInt((distanceRatio * (style.to[k] - style.from[k])) + style.from[k]);
+              });
+            
+              calcVal = "rgb(" + color.join(",") + ")";
+            
+            } else {
+              calcVal = (distance > settings.distance) ? style.from : (distanceRatio * (style.to - style.from)) + style.from;
+              calcVal += style.unit;
+            }
 
-	      $(self).animate(calcStyles, settings.interval - 1); 
-	    });
-      
+            calcStyles[style.name] = calcVal;
+            
+          });
+
+          $(self).animate(calcStyles, settings.interval - 1);
+          
+      });
+        
     });
 
       // Get the center of the object
